@@ -28,6 +28,7 @@ int main(int argc, char** argv)
   while(getline(inf, temp)) //read entire file
   {
     transform(temp.begin(), temp.end(), temp.begin(), ::tolower); //lowercase
+    //need to add checking for only lowercase and 7 or less characters
     count = 0; //reset conut
 
     for(size_t j = 0; j < temp.length(); j++) //entire string
