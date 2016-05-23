@@ -59,11 +59,8 @@ void checkBlank(string &s, set<string> &blank, int &good)
 
 void generateCombinations(set<string> &blank, set<string> &words, string &orig,
                           string &s, WordMap &wordmap, LetterMap &lettermap,
-                          int &best, int good)
+                          int &best, int good, int count, string t)
 {
-  string t = "";
-  int count = 0;
-
   for(set<string>::iterator it = blank.begin(); it != blank.end(); it++)
   {
     s = *it;
@@ -115,13 +112,13 @@ void printWords(set<string> &words, int best, string orig)
 
 int main(int argc, char** argv)
 {
-  int best = 0, good = 1;
+  int best = 0, good = 1, count = 0;
   int letterValues[] = {1, 3, 3, 2, 1, 4, 2, 4, 2, 8, 5, 1, 3, 1, 1, 3, 10, 1,
                         1, 1, 1, 4, 4, 8, 4, 10};
   LetterMap lettermap;
   WordMap wordmap;
   set<string> words, blank;
-  string s = "", orig = "";
+  string s = "", orig = "", t = "";
 
   for(int i = 0; i < 26; i ++) //assigning pt values to letters
     lettermap.insert(LetterMap::value_type(i + 'a', letterValues[i]));
@@ -135,7 +132,8 @@ int main(int argc, char** argv)
     sort(s.begin(), s.end()); //sort to get all possible when using next_perm
 
     checkBlank(s, blank, good);
-    generateCombinations(blank, words, orig, s, wordmap, lettermap, best, good);
+    generateCombinations(blank, words, orig, s, wordmap, lettermap, best, good,
+                         count, t);
     printWords(words, best, orig);
     words.clear(); //clear output set
     blank.clear(); //clear input set
