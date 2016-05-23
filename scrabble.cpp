@@ -38,7 +38,7 @@ void setupDict(LetterMap &lettermap, WordMap &wordmap)
   inf.close(); //close file
 }
 
-void checkBlank(string &s, set<string> blank, int &good)
+void checkBlank(string &s, set<string> &blank, int &good)
 {
   if(s.length() > 0 && isspace(s.at(0))) //if blank
   {
@@ -56,8 +56,8 @@ void checkBlank(string &s, set<string> blank, int &good)
   }
 }
 
-void generateCombinations(set<string> blank, set<string> words, string &orig,
-string &s, WordMap wordmap, LetterMap lettermap, int &best, int &good)
+void generateCombinations(set<string> &blank, set<string> &words, string &orig,
+string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int &good)
 {
   string t = "";
   int count;
