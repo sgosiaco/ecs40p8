@@ -53,7 +53,7 @@ int main(int argc, char** argv)
     orig = s; //save string for print
     sort(s.begin(), s.end()); //sort to get all possible when using next_perm
 
-    if(isspace(s.at(0))) //if blank
+    if(s.length() > 0 && isspace(s.at(0))) //if blank
     {
       good = 0; //set flag for blank
 
@@ -107,7 +107,7 @@ int main(int argc, char** argv)
       cout << endl;
     } //if
     else//no words
-      cout << "No words found." << endl;
+      cout << " No words found." << endl;
 
     words.clear(); //clear output set
     blank.clear(); //clear input set
