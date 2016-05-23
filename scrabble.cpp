@@ -5,8 +5,6 @@
 #include <map>
 #include <set>
 #include <fstream>
-#include <locale>
-#include <cctype>
 
 using namespace std;
 typedef map<char, int> LetterMap;
@@ -100,12 +98,12 @@ int main(int argc, char** argv)
         }// for
       } while(std::next_permutation(s.begin(), s.end())); //give all perm
     }
-    cout << setw(2) << best << ' ' << orig << ": ";
+    cout << setw(2) << best << ' ' << orig << ":";
 
     if(!words.empty()) //words
     {
       for(set<string>::iterator it = words.begin(); it != words.end(); it++)
-        cout << *it << ' ';
+        cout << ' ' << *it;
       cout << endl;
     } //if
     else//no words
