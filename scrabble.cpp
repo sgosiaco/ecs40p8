@@ -57,10 +57,10 @@ void checkBlank(string &s, set<string> &blank, int &good)
 }
 
 void generateCombinations(set<string> &blank, set<string> &words, string &orig,
-string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int &good)
+string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int good)
 {
   string t = "";
-  int count;
+  int count = 0;
 
   for(set<string>::iterator it = blank.begin(); it != blank.end(); it++)
   {
@@ -81,21 +81,23 @@ string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int &good)
             count = wordmap.at(t); //get count from map
 
           if(count >= best)
+          {
             if(count > best)
             {
               words.clear(); //clear wordset
               best = count; //set new best pts
             } //if
             words.insert(t); //insert into worset
+          } //if
         } //if
       }// for
     } while(std::next_permutation(s.begin(), s.end())); //give all perm
   }
-  cout << setw(2) << best << ' ' << orig << ":";
 }
 
-void printWords(set<string> &words)
+void printWords(set<string> &words, int best, string orig)
 {
+  cout << setw(2) << best << ' ' << orig << ":";
   if(!words.empty()) //words
   {
     for(set<string>::iterator it = words.begin(); it != words.end(); it++)
@@ -129,12 +131,10 @@ int main(int argc, char** argv)
 
     checkBlank(s, blank, good);
     generateCombinations(blank, words, orig, s, wordmap, lettermap, best, good);
-    printWords(words);
-
+    printWords(words, best, orig);
     words.clear(); //clear output set
     blank.clear(); //clear input set
     best = 0; //reset best score
-    good = 1; //reset blank flag
   } //while
   in.close();
   return 0;
