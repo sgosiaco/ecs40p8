@@ -35,8 +35,9 @@ void setupDict(LetterMap &lettermap, WordMap &wordmap)
       wordmap.insert(WordMap::value_type(temp, count)); //insert word + score
     } //if
   } //while
+
   inf.close(); //close file
-}
+} //setupDict()
 
 void checkBlank(string &s, set<string> &blank, int &good)
 {
@@ -48,16 +49,17 @@ void checkBlank(string &s, set<string> &blank, int &good)
     {
       s.at(0) = 'a' + i;
       blank.insert(s); //insert all 26 combinations
-    }
-  }
-  else
+    } //for
+  } //if
+  else //else
   {
     blank.insert(s);
-  }
-}
+  } //else
+} //checkBlank()
 
 void generateCombinations(set<string> &blank, set<string> &words, string &orig,
-string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int good)
+                          string &s, WordMap &wordmap, LetterMap &lettermap,
+                          int &best, int good)
 {
   string t = "";
   int count = 0;
@@ -66,6 +68,7 @@ string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int good)
   {
     s = *it;
     sort(s.begin(), s.end()); //resort for max perm
+
     do
     {
       for(size_t i = 2; i < s.length() + 1; i++) //get all substrings
@@ -87,17 +90,19 @@ string &s, WordMap &wordmap, LetterMap &lettermap, int &best, int good)
               words.clear(); //clear wordset
               best = count; //set new best pts
             } //if
+
             words.insert(t); //insert into worset
           } //if
         } //if
       }// for
     } while(std::next_permutation(s.begin(), s.end())); //give all perm
-  }
-}
+  } //for
+} //generateCombinations()
 
 void printWords(set<string> &words, int best, string orig)
 {
   cout << setw(2) << best << ' ' << orig << ":";
+
   if(!words.empty()) //words
   {
     for(set<string>::iterator it = words.begin(); it != words.end(); it++)
@@ -106,7 +111,7 @@ void printWords(set<string> &words, int best, string orig)
   } //if
   else//no words
     cout << " No words found." << endl;
-}
+} //printWords()
 
 int main(int argc, char** argv)
 {
@@ -136,6 +141,7 @@ int main(int argc, char** argv)
     blank.clear(); //clear input set
     best = 0; //reset best score
   } //while
+
   in.close();
   return 0;
 } //main()
