@@ -92,7 +92,7 @@ void generateCombinations(set<string> &blank, set<string> &words, string &orig,
           } //if
         } //if
       }// for
-    } while(std::next_permutation(s.begin(), s.end())); //give all perm
+    } while(next_permutation(s.begin(), s.end())); //give all perm
   } //for
 } //generateCombinations()
 
