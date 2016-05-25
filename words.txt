@@ -7866,6 +7866,7 @@ Epsom
 Epstein
 equable
 equal
+equalize
 equanimity
 equate
 equatorial
@@ -16404,6 +16405,7 @@ Oxford
 oxidant
 oxidate
 oxide
+oxidize
 Oxnard
 Oxonian
 oxygen
@@ -18454,6 +18456,7 @@ quick
 quicken
 quickie
 quicklime
+quickly
 quicksand
 quicksilver
 quickstep
@@ -25108,3 +25111,4 @@ z's
 zucchini
 Zurich
 zygote
+zymurgy
