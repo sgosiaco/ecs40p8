@@ -10,7 +10,7 @@ using namespace std;
 typedef map<char, int> LetterMap;
 typedef map<string, int> WordMap;
 
-void setupDict(LetterMap &lettermap, WordMap &wordmap)
+void setupDict(const LetterMap &lettermap, WordMap &wordmap)
 {
   string temp;
   int good = 1, count = 0;
@@ -57,8 +57,9 @@ void checkBlank(string &s, set<string> &blank, int &good)
   } //else
 } //checkBlank()
 
-void generateCombinations(set<string> &blank, set<string> &words, string &orig,
-                          string &s, WordMap &wordmap, LetterMap &lettermap,
+void generateCombinations(const set<string> &blank, set<string> &words,
+                          string &s, const WordMap &wordmap,
+                          const LetterMap &lettermap,
                           int &best, int good, int count, string t)
 {
   for(set<string>::iterator it = blank.begin(); it != blank.end(); it++)
@@ -96,7 +97,7 @@ void generateCombinations(set<string> &blank, set<string> &words, string &orig,
   } //for
 } //generateCombinations()
 
-void printWords(set<string> &words, int best, string orig)
+void printWords(const set<string> &words, int best, string orig)
 {
   cout << setw(2) << best << ' ' << orig << ":";
 
@@ -132,7 +133,7 @@ int main(int argc, char** argv)
     sort(s.begin(), s.end()); //sort to get all possible when using next_perm
 
     checkBlank(s, blank, good);
-    generateCombinations(blank, words, orig, s, wordmap, lettermap, best, good,
+    generateCombinations(blank, words, s, wordmap, lettermap, best, good,
                          count, t);
     printWords(words, best, orig);
     words.clear(); //clear output set
